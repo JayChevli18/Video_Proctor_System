@@ -88,7 +88,7 @@ app.set('io', io);
 app.use(errorHandler);
 
 // 404 handler
-app.use('*', (req, res) => {
+app.use((req, res) => {
   res.status(404).json({ 
     success: false, 
     message: 'Route not found' 
@@ -98,7 +98,9 @@ app.use('*', (req, res) => {
 // Connect to database and start server
 const startServer = async () => {
   try {
+    console.log('Starting server...');
     await connectDB();
+    console.log('Database connected successfully');
     logger.info('Database connected successfully');
     
     server.listen(PORT, () => {

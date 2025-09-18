@@ -1,0 +1,73 @@
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:08:12"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:08:12"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:08:12"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:13:56"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:13:56"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:13:56"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:14:06"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:14:06"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:14:06"}
+{"_message":"User validation failed","errors":{"password":{"kind":"minlength","message":"Path `password` (`123`, length 3) is shorter than the minimum allowed length (6).","name":"ValidatorError","path":"password","properties":{"length":3,"message":"Path `password` (`123`, length 3) is shorter than the minimum allowed length (6).","minlength":6,"path":"password","type":"minlength","value":"123"},"value":"123"}},"level":"error","message":"Create user error: User validation failed: password: Path `password` (`123`, length 3) is shorter than the minimum allowed length (6).","service":"video-proctor-backend","stack":"ValidationError: User validation failed: password: Path `password` (`123`, length 3) is shorter than the minimum allowed length (6).\n    at model.Document.invalidate (D:\\Jay\\Next_Task\\Video_Proctor_System\\Backend\\node_modules\\mongoose\\lib\\document.js:3358:32)\n    at D:\\Jay\\Next_Task\\Video_Proctor_System\\Backend\\node_modules\\mongoose\\lib\\document.js:3119:17\n    at D:\\Jay\\Next_Task\\Video_Proctor_System\\Backend\\node_modules\\mongoose\\lib\\schemaType.js:1416:9\n    at processTicksAndRejections (node:internal/process/task_queues:85:11)","timestamp":"2025-09-18 14:14:08"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:19:15"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:19:15"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:19:15"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:24:19"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:24:19"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:24:19"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:25:02"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:25:02"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:25:02"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:28:01"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:28:01"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:28:01"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:43:15"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:43:15"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:43:15"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:49:07"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:49:07"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:49:07"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:50:43"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:50:43"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:50:43"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:51:29"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:51:29"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:51:29"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:53:59"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:53:59"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:53:59"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:54:10"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:54:10"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:54:10"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:54:28"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:54:28"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:54:28"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:56:06"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:56:06"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:56:06"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:57:38"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:57:38"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:57:38"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:57:59"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:57:59"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:57:59"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 14:58:44"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 14:58:44"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 14:58:44"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 15:09:11"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 15:09:11"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 15:09:11"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 15:20:13"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 15:20:13"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 15:20:13"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:44"}
+{"level":"warn","message":"Falling back to @tensorflow/tfjs (pure JS)","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:47"}
+{"level":"warn","message":"MediaPipe FaceMesh unavailable in this environment","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:47"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:47"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:47"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:47"}
+{"level":"warn","message":"Failed to load object detection model from TFHub; will simulate detections","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:48"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-18 15:30:48"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-18 15:31:52"}
+{"level":"warn","message":"Falling back to @tensorflow/tfjs (pure JS)","service":"video-proctor-backend","timestamp":"2025-09-18 15:31:54"}
+{"level":"warn","message":"MediaPipe FaceMesh unavailable in this environment","service":"video-proctor-backend","timestamp":"2025-09-18 15:31:54"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-18 15:31:54"}

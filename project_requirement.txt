@@ -1,0 +1,67 @@
+Project Title: Focus & Object Detection in Video Interviews
+
+
+Objective:
+
+- Build a video proctoring system that:
+- Detects whether a candidate is focused during an online interview.
+- Flags if unauthorized items (phone, books, notes, extra devices) appear in the video.
+
+
+Requirements:
+
+1. Frontend (Interview Screen)
+
+- Simple web page where the interviewer can see the candidate’s video.
+- Candidate’s video should be recorded/stored.
+- Real-time detection of focus & suspicious events (e.g., “User looking away”, “Phone detected”).
+
+
+2. Focus Detection Logic
+
+- Use CV libraries (OpenCV, MediaPipe, TensorFlow.js, etc.).
+- Detect if candidate is not looking at the screen for >5 sec.
+- Detect if no face is present for >10 sec.
+- Detect multiple faces in the frame (if possible)
+- Log all events with timestamps.
+
+
+3. Item/Note Detection
+
+- Use object detection (YOLO / TF.js) to identify:
+- Mobile phone
+- Books / paper notes
+- Extra electronic devices
+- Flag and log these events in real time.
+
+
+4. Backend (Optional but Preferred)
+
+- Store logs in a database (MongoDB / MySQL / Firebase).
+- Provide API to fetch focus + item detection reports.
+
+
+5. Reporting
+
+- Generate a Proctoring Report with:
+- Candidate Name
+- Interview Duration
+- Number of times focus lost
+- Suspicious events (multiple faces, absence, phone/notes detected)
+- Final Integrity Score = 100 – deductions
+
+
+Technologies to be used:
+
+Language: TypeScript
+Frontend: Next.js, React, TailwindCSS, Formik, Yup, ReactTable, TanStackQuery or Normal Query as per requirements convenience, Redux, Axios
+Backend: Node.js, Express.js, Zod, TypeORM
+Database: MongoDB
+Other Technologies: YOLO / TF.js, OpenCV, MediaPipe, TensorFlow.js, etc.
+
+
+Note: 
+- If any other Technologies is required for this which is necessary, then integrate that also.
+- Backend Structure should be MVC based with proper industry standard. Also, the Frontend Structure should be MVC based.
+- For Custom Component in Front, you can create your own, or can use any 3rd party external libraries like Shadcn, Aceternity UI, Daisy UI, etc.
+- The UI should be User Friendly and its looks the best.

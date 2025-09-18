@@ -3,12 +3,14 @@ import { logger } from '@/utils/logger';
 
 const connectDB = async (): Promise<void> => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/video_proctor_db';
+    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
     
-    const conn = await mongoose.connect(mongoURI);
+    const dbName = process.env.DB_NAME || 'video_proctor_db';
+
+    const conn = await mongoose.connect(mongoURI, { dbName });
     
     logger.info(`MongoDB Connected: ${conn.connection.host}`);
-    
+    // console.log("CCC", conn);
     // Handle connection events
     mongoose.connection.on('error', (err) => {
       logger.error('MongoDB connection error:', err);

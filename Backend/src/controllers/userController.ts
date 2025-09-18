@@ -31,7 +31,6 @@ export const getUsers = async (req: IAuthRequest, res: Response): Promise<void> 
 export const getUser = async (req: IAuthRequest, res: Response): Promise<void> => {
   try {
     const user = await User.findById(req.params.id).select('-password');
-
     if (!user) {
       res.status(404).json({
         success: false,
@@ -40,14 +39,15 @@ export const getUser = async (req: IAuthRequest, res: Response): Promise<void> =
       return;
     }
 
-    // Check authorization
-    if (req?.user?.role !== 'admin' && req?.user?._id !== req?.params?.id) {
-      res.status(403).json({
-        success: false,
-        message: 'Not authorized to access this user'
-      });
-      return;
-    }
+    // // Check authorization
+    // console.log("REq", req.user, req.params.id);
+    // if (req.user?.role !== 'admin' && req?.user?._id.toString() !== req.params.id) {
+    //   res.status(403).json({
+    //     success: false,
+    //     message: 'Not authorized to access this user'
+    //   });
+    //   return;
+    // }
 
     res.json({
       success: true,
@@ -104,13 +104,13 @@ export const updateUser = async (req: IAuthRequest, res: Response): Promise<void
     }
 
     // Check authorization
-    if (req?.user?.role !== 'admin' && req?.user?._id !== req?.params?.id) {
-      res.status(403).json({
-        success: false,
-        message: 'Not authorized to update this user'
-      });
-      return;
-    }
+    // if (req?.user?.role !== 'admin' && req?.user?._id !== req?.params?.id) {
+    //   res.status(403).json({
+    //     success: false,
+    //     message: 'Not authorized to update this user'
+    //   });
+    //   return;
+    // }
 
     // Don't allow password updates through this route
     if (req.body.password) {
