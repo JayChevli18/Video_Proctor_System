@@ -10,10 +10,22 @@ const api: AxiosInstance = axios.create({
   },
 });
 
+// Log API configuration
+console.log('API Configuration:', {
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
+  env: process.env.NODE_ENV
+});
+
 // Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
+    console.log('API Request:', {
+      url: config.url,
+      method: config.method,
+      hasToken: !!token,
+      baseURL: config.baseURL
+    });
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

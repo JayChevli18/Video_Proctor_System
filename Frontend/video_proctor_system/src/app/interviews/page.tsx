@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '@/store';
-import { fetchInterviews, deleteInterview } from '@/store/slices/interviewSlice';
+import { fetchInterviews, deleteInterview, startInterview, endInterview } from '@/store/slices/interviewSlice';
 import AuthGuard from '@/components/auth/AuthGuard';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { 
@@ -15,14 +15,18 @@ import {
   Edit,
   Trash2,
   Play,
-  Square
+  Square,
+  Video
 } from 'lucide-react';
 import { formatDateTime } from '@/lib/utils';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import InterviewCreationModal from '@/components/interviews/InterviewCreationModal';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 export default function InterviewsPage() {
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
   const { user } = useSelector((state: RootState) => state.auth);
   const { interviews, isLoading } = useSelector((state: RootState) => state.interviews);
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -43,6 +47,32 @@ export default function InterviewsPage() {
       } catch (error) {
         toast.error('An unexpected error occurred');
       }
+    }
+  };
+
+  const handleStartInterview = async (id: string) => {
+    try {
+      const result = await dispatch(startInterview(id));
+      if (startInterview.fulfilled.match(result)) {
+        toast.success('Interview started successfully');
+      } else {
+        toast.error(result.payload as string || 'Failed to start interview');
+      }
+    } catch (error) {
+      toast.error('An unexpected error occurred');
+    }
+  };
+
+  const handleEndInterview = async (id: string) => {
+    try {
+      const result = await dispatch(endInterview(id));
+      if (endInterview.fulfilled.match(result)) {
+        toast.success('Interview ended successfully');
+      } else {
+        toast.error(result.payload as string || 'Failed to end interview');
+      }
+    } catch (error) {
+      toast.error('An unexpected error occurred');
     }
   };
 
@@ -148,13 +178,30 @@ export default function InterviewsPage() {
                       </div>
                       <div className="flex items-center space-x-2">
                         {interview.status === 'scheduled' && (user?.role === 'interviewer' || user?.role === 'admin') && (
-                          <button className="p-1 text-green-600 hover:bg-green-50 rounded">
+                          <button 
+                            onClick={() => handleStartInterview(interview._id)}
+                            className="p-1 text-green-600 hover:bg-green-50 rounded"
+                            title="Start Interview"
+                          >
                             <Play className="h-4 w-4" />
                           </button>
                         )}
                         {interview.status === 'in-progress' && (user?.role === 'interviewer' || user?.role === 'admin') && (
-                          <button className="p-1 text-red-600 hover:bg-red-50 rounded">
+                          <button 
+                            onClick={() => handleEndInterview(interview._id)}
+                            className="p-1 text-red-600 hover:bg-red-50 rounded"
+                            title="End Interview"
+                          >
                             <Square className="h-4 w-4" />
+                          </button>
+                        )}
+                        {(interview.status === 'scheduled' || interview.status === 'in-progress') && (user?.role === 'interviewer' || user?.role === 'admin') && (
+                          <button 
+                            onClick={() => router.push(`/proctoring?interviewId=${interview._id}`)}
+                            className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+                            title="Start Proctoring"
+                          >
+                            <Video className="h-4 w-4" />
                           </button>
                         )}
                         {(user?.role === 'interviewer' || user?.role === 'admin') && (
@@ -192,6 +239,12 @@ export default function InterviewsPage() {
               </div>
             )}
           </div>
+
+          {/* Interview Creation Modal */}
+          <InterviewCreationModal
+            isOpen={showCreateModal}
+            onClose={() => setShowCreateModal(false)}
+          />
         </div>
       </DashboardLayout>
     </AuthGuard>

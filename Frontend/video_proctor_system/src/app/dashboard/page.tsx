@@ -27,9 +27,14 @@ export default function DashboardPage() {
   const { reports, isLoading: reportsLoading } = useSelector((state: RootState) => state.reports);
 
   useEffect(() => {
-    dispatch(fetchInterviews({ user: user?._id }));
-    dispatch(fetchReports({ user: user?._id }));
-  }, [dispatch]);
+    if (user?._id) {
+      console.log('Dashboard: Fetching data for user:', user._id);
+      dispatch(fetchInterviews({ user: user._id }));
+      dispatch(fetchReports({ user: user._id }));
+    } else {
+      console.log('Dashboard: No user ID available, skipping API calls');
+    }
+  }, [dispatch, user?._id]);
 
   const stats = [
     {

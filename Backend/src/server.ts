@@ -76,6 +76,11 @@ io.on('connection', (socket) => {
     logger.info(`Client ${socket.id} joined interview ${interviewId}`);
   });
   
+  socket.on('leave-interview', (interviewId) => {
+    socket.leave(interviewId);
+    logger.info(`Client ${socket.id} left interview ${interviewId}`);
+  });
+  
   socket.on('disconnect', () => {
     logger.info(`Client disconnected: ${socket.id}`);
   });

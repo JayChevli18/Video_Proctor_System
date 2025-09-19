@@ -25,12 +25,15 @@ export const fetchInterviews = createAsyncThunk(
   'interviews/fetchInterviews',
   async (params: any = {}, { rejectWithValue }) => {
     try {
+      console.log('fetchInterviews: Making API call with params:', params);
       const response = await interviewAPI.getInterviews(params);
+      console.log('fetchInterviews: API response:', response);
       if (response.success && response.data) {
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to fetch interviews');
     } catch (error: any) {
+      console.error('fetchInterviews: API error:', error);
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch interviews');
     }
   }

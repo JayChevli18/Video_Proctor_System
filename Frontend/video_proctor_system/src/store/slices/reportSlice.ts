@@ -21,12 +21,15 @@ export const fetchReports = createAsyncThunk(
   'reports/fetchReports',
   async (params?: any, { rejectWithValue }) => {
     try {
+      console.log('fetchReports: Making API call with params:', params);
       const response = await reportAPI.getReports(params);
+      console.log('fetchReports: API response:', response);
       if (response.success && response.data) {
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to fetch reports');
     } catch (error: any) {
+      console.error('fetchReports: API error:', error);
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch reports');
     }
   }

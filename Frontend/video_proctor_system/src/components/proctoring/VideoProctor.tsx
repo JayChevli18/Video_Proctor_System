@@ -65,6 +65,9 @@ export default function VideoProctor({ interviewId }: VideoProctorProps) {
     return () => {
       socketService.offDetectionEvent();
       socketService.leaveInterview(interviewId);
+      if (processingIntervalRef.current) {
+        clearInterval(processingIntervalRef.current);
+      }
     };
   }, [interviewId, dispatch]);
 
@@ -108,8 +111,11 @@ export default function VideoProctor({ interviewId }: VideoProctorProps) {
       processingIntervalRef.current = null;
     }
     
+    // Leave the interview room
+    socketService.leaveInterview(interviewId);
+    
     toast.success('Proctoring stopped');
-  }, [stopWebcam]);
+  }, [stopWebcam, interviewId]);
 
   const getDetectionIcon = (type: DetectionEvent['type']) => {
     switch (type) {

@@ -17,7 +17,8 @@ import {
   CheckCircle,
   Clock,
   User,
-  Calendar
+  Calendar,
+  X
 } from 'lucide-react';
 import { formatDate, formatDateTime } from '@/lib/utils';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
@@ -29,6 +30,7 @@ export default function ReportsPage() {
   const { reports, isLoading: reportsLoading } = useSelector((state: RootState) => state.reports);
   const { interviews, isLoading: interviewsLoading } = useSelector((state: RootState) => state.interviews);
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchReports({ user: user?._id }));
@@ -45,6 +47,45 @@ export default function ReportsPage() {
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
+    }
+  };
+
+  const handleDownloadReport = (report: any) => {
+    try {
+      // Create a comprehensive report document
+      const reportData = {
+        candidateName: report.candidateName,
+        interviewerName: report.interviewerName,
+        interviewDuration: report.interviewDuration,
+        integrityScore: report.integrityScore,
+        generatedAt: report.generatedAt,
+        summary: report.summary,
+        recommendations: report.recommendations,
+        detectionStatistics: {
+          focusLossEvents: report.totalFocusLossEvents,
+          faceAbsenceEvents: report.totalFaceAbsenceEvents,
+          multipleFacesEvents: report.totalMultipleFacesEvents,
+          phoneDetections: report.totalPhoneDetections,
+          notesDetections: report.totalNotesDetections,
+          deviceDetections: report.totalDeviceDetections
+        },
+        deductions: report.deductions
+      };
+
+      // Create and download JSON file
+      const dataStr = JSON.stringify(reportData, null, 2);
+      const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+      
+      const exportFileDefaultName = `interview-report-${report.candidateName}-${new Date(report.generatedAt).toISOString().split('T')[0]}.json`;
+      
+      const linkElement = document.createElement('a');
+      linkElement.setAttribute('href', dataUri);
+      linkElement.setAttribute('download', exportFileDefaultName);
+      linkElement.click();
+      
+      toast.success('Report downloaded successfully');
+    } catch (error) {
+      toast.error('Failed to download report');
     }
   };
 
@@ -243,13 +284,19 @@ export default function ReportsPage() {
                       
                       <div className="flex items-center space-x-2 ml-4">
                         <button
-                          onClick={() => setSelectedReport(report._id)}
+                          onClick={() => {
+                            setSelectedReport(report._id);
+                            setShowReportModal(true);
+                          }}
                           className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
                         >
                           <Eye className="h-4 w-4 mr-2" />
                           View Details
                         </button>
-                        <button className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                        <button 
+                          onClick={() => handleDownloadReport(report)}
+                          className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                        >
                           <Download className="h-4 w-4 mr-2" />
                           Download
                         </button>
@@ -268,6 +315,136 @@ export default function ReportsPage() {
               </div>
             )}
           </div>
+
+          {/* Report Details Modal */}
+          {showReportModal && selectedReport && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+              <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+                {(() => {
+                  const report = reports.find(r => r._id === selectedReport);
+                  if (!report) return null;
+                  
+                  return (
+                    <>
+                      {/* Header */}
+                      <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                        <h2 className="text-xl font-semibold text-gray-900">Report Details</h2>
+                        <button
+                          onClick={() => {
+                            setShowReportModal(false);
+                            setSelectedReport(null);
+                          }}
+                          className="text-gray-400 hover:text-gray-600 transition-colors"
+                        >
+                          <X className="h-6 w-6" />
+                        </button>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6 space-y-6">
+                        {/* Report Header */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <h3 className="text-lg font-medium text-gray-900 mb-2">Candidate Information</h3>
+                            <div className="space-y-2">
+                              <div className="flex items-center">
+                                <User className="h-4 w-4 mr-2 text-gray-500" />
+                                <span className="text-sm text-gray-600">Name: {report.candidateName}</span>
+                              </div>
+                              <div className="flex items-center">
+                                <User className="h-4 w-4 mr-2 text-gray-500" />
+                                <span className="text-sm text-gray-600">Interviewer: {report.interviewerName}</span>
+                              </div>
+                              <div className="flex items-center">
+                                <Clock className="h-4 w-4 mr-2 text-gray-500" />
+                                <span className="text-sm text-gray-600">Duration: {report.interviewDuration} minutes</span>
+                              </div>
+                              <div className="flex items-center">
+                                <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                                <span className="text-sm text-gray-600">Generated: {formatDate(report.generatedAt)}</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h3 className="text-lg font-medium text-gray-900 mb-2">Integrity Score</h3>
+                            <div className="text-center">
+                              <div className={`text-4xl font-bold mb-2 ${getIntegrityScoreColor(report.integrityScore)}`}>
+                                {report.integrityScore}%
+                              </div>
+                              <p className="text-sm text-gray-600">
+                                {report.integrityScore >= 90 
+                                  ? 'Excellent' 
+                                  : report.integrityScore >= 70 
+                                  ? 'Good' 
+                                  : 'Needs Attention'}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Detection Statistics */}
+                        <div>
+                          <h3 className="text-lg font-medium text-gray-900 mb-4">Detection Statistics</h3>
+                          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <div className="text-2xl font-bold text-gray-900">{report.totalFocusLossEvents}</div>
+                              <div className="text-sm text-gray-600">Focus Loss Events</div>
+                              <div className="text-xs text-gray-500">-{report.deductions.focusLoss} points</div>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <div className="text-2xl font-bold text-gray-900">{report.totalFaceAbsenceEvents}</div>
+                              <div className="text-sm text-gray-600">Face Absence Events</div>
+                              <div className="text-xs text-gray-500">-{report.deductions.faceAbsence} points</div>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <div className="text-2xl font-bold text-gray-900">{report.totalMultipleFacesEvents}</div>
+                              <div className="text-sm text-gray-600">Multiple Faces</div>
+                              <div className="text-xs text-gray-500">-{report.deductions.multipleFaces} points</div>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <div className="text-2xl font-bold text-gray-900">{report.totalPhoneDetections}</div>
+                              <div className="text-sm text-gray-600">Phone Detections</div>
+                              <div className="text-xs text-gray-500">-{report.deductions.phoneDetections} points</div>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <div className="text-2xl font-bold text-gray-900">{report.totalNotesDetections}</div>
+                              <div className="text-sm text-gray-600">Notes Detections</div>
+                              <div className="text-xs text-gray-500">-{report.deductions.notesDetections} points</div>
+                            </div>
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                              <div className="text-2xl font-bold text-gray-900">{report.totalDeviceDetections}</div>
+                              <div className="text-sm text-gray-600">Device Detections</div>
+                              <div className="text-xs text-gray-500">-{report.deductions.deviceDetections} points</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Summary */}
+                        <div>
+                          <h3 className="text-lg font-medium text-gray-900 mb-2">Summary</h3>
+                          <p className="text-gray-600 bg-gray-50 p-4 rounded-lg">{report.summary}</p>
+                        </div>
+
+                        {/* Recommendations */}
+                        <div>
+                          <h3 className="text-lg font-medium text-gray-900 mb-2">Recommendations</h3>
+                          <div className="space-y-2">
+                            {report.recommendations.map((recommendation, index) => (
+                              <div key={index} className="flex items-start">
+                                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-600">{recommendation}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+          )}
         </div>
       </DashboardLayout>
     </AuthGuard>

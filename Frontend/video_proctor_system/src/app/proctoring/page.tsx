@@ -10,9 +10,11 @@ import VideoProctor from '@/components/proctoring/VideoProctor';
 import { Video, Calendar, User, Clock } from 'lucide-react';
 import { formatDateTime } from '@/lib/utils';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { useSearchParams } from 'next/navigation';
 
 export default function ProctoringPage() {
   const dispatch = useDispatch<AppDispatch>();
+  const searchParams = useSearchParams();
   const { user } = useSelector((state: RootState) => state.auth);
   const { interviews, isLoading } = useSelector((state: RootState) => state.interviews);
   const [selectedInterview, setSelectedInterview] = useState<string | null>(null);
@@ -20,6 +22,13 @@ export default function ProctoringPage() {
   useEffect(() => {
     dispatch(fetchInterviews({ user: user?._id }));
   }, [dispatch]);
+
+  useEffect(() => {
+    const interviewId = searchParams.get('interviewId');
+    if (interviewId) {
+      setSelectedInterview(interviewId);
+    }
+  }, [searchParams]);
 
   const availableInterviews = interviews.filter(interview => 
     interview.status === 'scheduled' || interview.status === 'in-progress'
