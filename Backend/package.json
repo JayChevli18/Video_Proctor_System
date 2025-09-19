@@ -7,7 +7,9 @@
     "dev": "nodemon",
     "build": "tsc && tsc-alias",
     "start": "node dist/server.js",
-    "test": "jest"
+    "test": "jest",
+    "setup": "node setup.js",
+    "test-api": "node test-api.js"
   },
   "keywords": [
     "video",
@@ -26,6 +28,8 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
+    "ffmpeg-static": "^5.2.0",
+    "fluent-ffmpeg": "^2.1.2",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1",
@@ -39,6 +43,7 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/fluent-ffmpeg": "^2.1.24",
     "@types/jest": "^29.5.8",
     "@types/jsonwebtoken": "^9.0.5",
     "@types/multer": "^1.4.11",

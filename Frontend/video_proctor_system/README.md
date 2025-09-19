@@ -1,36 +1,196 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Video Proctor System - Frontend
+
+A comprehensive frontend application for the Video Proctor System, built with Next.js, React, and modern web technologies. This application provides a complete interface for managing online interviews with real-time AI-powered proctoring capabilities.
+
+## Features
+
+- **🔐 Authentication System**: Secure login/register with JWT token management
+- **📊 Dashboard**: Comprehensive overview with statistics and quick actions
+- **📅 Interview Management**: Create, schedule, and manage interview sessions
+- **🎥 Live Proctoring**: Real-time video monitoring with AI detection
+- **📈 Reporting System**: Detailed integrity reports and analytics
+- **👥 User Management**: Role-based access control (Interviewer, Candidate, Admin)
+- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+- **⚡ Real-time Updates**: WebSocket integration for live detection events
+- **🎨 Modern UI**: Beautiful, intuitive interface with Tailwind CSS
+
+## Technology Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: Redux Toolkit with Redux Persist
+- **Data Fetching**: TanStack Query (React Query)
+- **Forms**: Formik with Yup validation
+- **Real-time**: Socket.io Client
+- **HTTP Client**: Axios
+- **Icons**: Lucide React
+- **Notifications**: React Hot Toast
+- **Video**: React Webcam
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── auth/              # Authentication pages
+│   ├── dashboard/         # Main dashboard
+│   ├── interviews/        # Interview management
+│   ├── proctoring/        # Live proctoring interface
+│   └── reports/           # Reports and analytics
+├── components/            # Reusable UI components
+│   ├── auth/              # Authentication components
+│   ├── layout/            # Layout components
+│   ├── proctoring/        # Proctoring-specific components
+│   └── ui/                # Generic UI components
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utility libraries
+│   ├── api.ts            # API client configuration
+│   ├── socket.ts         # Socket.io client
+│   └── utils.ts          # Utility functions
+├── store/                 # Redux store configuration
+│   ├── slices/           # Redux slices
+│   └── index.ts          # Store setup
+└── types/                 # TypeScript type definitions
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 16+ 
+- npm or yarn
+- Backend server running on http://localhost:5000
+
+### Installation
+
+1. **Clone and Setup**
+   ```bash
+   cd Frontend/video_proctor_system
+   npm run setup
+   ```
+
+2. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Open Application**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Environment Configuration
+
+The setup script creates a `.env.local` file with default configuration:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build the application for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint for code quality
+- `npm run setup` - Initial setup and dependency installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Features
 
-## Learn More
+### Authentication
+- Secure JWT-based authentication
+- Role-based access control
+- Protected routes and components
+- Automatic token refresh
 
-To learn more about Next.js, take a look at the following resources:
+### Dashboard
+- Overview statistics and metrics
+- Recent interviews and reports
+- Quick action buttons
+- Real-time updates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Interview Management
+- Create and schedule interviews
+- Manage interview lifecycle
+- View interview details
+- Start/stop interview sessions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Live Proctoring
+- Real-time video monitoring
+- AI-powered detection events
+- Live integrity scoring
+- WebSocket integration for instant updates
 
-## Deploy on Vercel
+### Reporting System
+- Comprehensive integrity reports
+- Detailed analytics and insights
+- Export capabilities
+- Historical data tracking
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The frontend integrates with the backend API through:
+
+- **REST API**: For CRUD operations
+- **WebSocket**: For real-time updates
+- **File Upload**: For video processing
+- **Authentication**: JWT token management
+
+## State Management
+
+Uses Redux Toolkit for predictable state management:
+
+- **Auth Slice**: User authentication and profile
+- **UI Slice**: Application UI state
+- **Interview Slice**: Interview data and operations
+- **Report Slice**: Report data and generation
+
+## Real-time Features
+
+- Live detection events via WebSocket
+- Real-time integrity score updates
+- Instant notifications for violations
+- Live interview status updates
+
+## Responsive Design
+
+- Mobile-first approach
+- Responsive grid layouts
+- Touch-friendly interfaces
+- Optimized for all screen sizes
+
+## Security Features
+
+- JWT token authentication
+- Protected routes and components
+- Role-based access control
+- Secure API communication
+- Input validation and sanitization
+
+## Performance Optimizations
+
+- Code splitting and lazy loading
+- Image optimization
+- Caching strategies
+- Bundle size optimization
+- Efficient re-rendering
+
+## Browser Support
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## Contributing
+
+1. Follow TypeScript best practices
+2. Use proper error handling
+3. Write responsive components
+4. Add proper loading states
+5. Include accessibility features
+
+## License
+
+ISC License

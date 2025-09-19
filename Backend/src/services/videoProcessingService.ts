@@ -1,9 +1,16 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import ffmpeg from 'fluent-ffmpeg';
+import ffmpegStatic from 'ffmpeg-static';
 import { logger } from '@/utils/logger';
 import { computerVisionService } from '@/services/computerVisionService';
 import { IDetectionResult, IVideoMetadata } from '@/types';
+
+// Set FFmpeg path
+if (ffmpegStatic) {
+  ffmpeg.setFfmpegPath(ffmpegStatic);
+}
 
 // Configure multer for video uploads
 const storage = multer.diskStorage({
@@ -53,21 +60,23 @@ export class VideoProcessingService {
     try {
       logger.info(`Starting video processing for interview ${interviewId}`);
       
-      // In a real implementation, this would:
-      // 1. Extract frames from video
-      // 2. Process each frame with computer vision
-      // 3. Aggregate results
+      // Extract frames from video
+      const frames = await this.extractFrames(filePath);
       
-      // For now, we'll simulate processing
+      // Process each frame with computer vision
       const allDetections: IDetectionResult[] = [];
       
-      // Simulate processing multiple frames
-      for (let i = 0; i < 10; i++) {
-        const frameDetections = await computerVisionService.processFrame(Buffer.from('mock-frame-data'));
-        allDetections.push(...frameDetections);
-        
-        // Simulate processing delay
-        await new Promise(resolve => setTimeout(resolve, 100));
+      for (const frame of frames) {
+        try {
+          const frameDetections = await computerVisionService.processFrame(frame);
+          allDetections.push(...frameDetections);
+          
+          // Small delay to prevent overwhelming the system
+          await new Promise(resolve => setTimeout(resolve, 50));
+        } catch (frameError) {
+          logger.error('Error processing frame:', frameError);
+          // Continue processing other frames even if one fails
+        }
       }
 
       logger.info(`Video processing completed for interview ${interviewId}. Found ${allDetections.length} detections.`);
@@ -82,15 +91,64 @@ export class VideoProcessingService {
   }
 
   /**
-   * Extract frames from video (placeholder)
+   * Extract frames from video using FFmpeg
    */
   private async extractFrames(videoPath: string): Promise<Buffer[]> {
-    // In real implementation, this would use FFmpeg or similar
-    // to extract frames from the video
-    logger.info(`Extracting frames from ${videoPath}`);
-    
-    // Return mock frame data
-    return Array(10).fill(0).map(() => Buffer.from('mock-frame-data'));
+    return new Promise((resolve, reject) => {
+      const frames: Buffer[] = [];
+      const tempDir = path.join(process.cwd(), 'temp', 'frames');
+      
+      // Create temp directory if it doesn't exist
+      if (!fs.existsSync(tempDir)) {
+        fs.mkdirSync(tempDir, { recursive: true });
+      }
+
+      // Get video duration first
+      ffmpeg.ffprobe(videoPath, (err: any, metadata: any) => {
+        if (err) {
+          logger.error('Error getting video metadata:', err);
+          reject(err);
+          return;
+        }
+
+        const duration = metadata.format.duration || 0;
+        const frameInterval = Math.max(1, Math.floor(duration / 10)); // Extract 10 frames evenly distributed
+
+        ffmpeg(videoPath)
+          .fps(1 / frameInterval) // Extract 1 frame every frameInterval seconds
+          .outputOptions(['-frames:v 10']) // Limit to 10 frames
+          .format('image2')
+          .output(path.join(tempDir, 'frame_%03d.jpg'))
+          .on('end', () => {
+            // Read all extracted frames
+            const frameFiles = fs.readdirSync(tempDir)
+              .filter(file => file.startsWith('frame_') && file.endsWith('.jpg'))
+              .sort();
+
+            for (const frameFile of frameFiles) {
+              const framePath = path.join(tempDir, frameFile);
+              const frameBuffer = fs.readFileSync(framePath);
+              frames.push(frameBuffer);
+              
+              // Clean up individual frame file
+              fs.unlinkSync(framePath);
+            }
+
+            // Clean up temp directory
+            if (fs.existsSync(tempDir)) {
+              fs.rmdirSync(tempDir);
+            }
+
+            logger.info(`Extracted ${frames.length} frames from ${videoPath}`);
+            resolve(frames);
+          })
+          .on('error', (err: any) => {
+            logger.error('Error extracting frames:', err);
+            reject(err);
+          })
+          .run();
+      });
+    });
   }
 
   /**
