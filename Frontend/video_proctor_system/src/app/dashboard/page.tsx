@@ -92,7 +92,7 @@ export default function DashboardPage() {
               Welcome back, {user?.name}!
             </h1>
             <p className="text-gray-600">
-              Here's what's happening with your interviews today.
+              Here is what happening with your interviews today.
             </p>
           </div>
 
