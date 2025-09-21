@@ -11,8 +11,6 @@ import {
   FileText, 
   Download, 
   Eye, 
-  TrendingUp,
-  TrendingDown,
   AlertTriangle,
   CheckCircle,
   Clock,
@@ -20,9 +18,10 @@ import {
   Calendar,
   X
 } from 'lucide-react';
-import { formatDate, formatDateTime } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import toast from 'react-hot-toast';
+import type { Report } from '@/types'; // Make sure this type exists and matches your report structure
 
 export default function ReportsPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,7 +34,7 @@ export default function ReportsPage() {
   useEffect(() => {
     dispatch(fetchReports({ user: user?._id }));
     dispatch(fetchInterviews({ user: user?._id }));
-  }, [dispatch]);
+  }, [dispatch, user?._id]);
 
   const handleGenerateReport = async (interviewId: string) => {
     try {
@@ -43,14 +42,14 @@ export default function ReportsPage() {
       if (generateReport.fulfilled.match(result)) {
         toast.success('Report generated successfully');
       } else {
-        toast.error(result.payload as string || 'Failed to generate report');
+        toast.error((result.payload as string) || 'Failed to generate report');
       }
-    } catch (error) {
+    } catch {
       toast.error('An unexpected error occurred');
     }
   };
 
-  const handleDownloadReport = (report: any) => {
+  const handleDownloadReport = (report: Report) => {
     try {
       // Create a comprehensive report document
       const reportData = {
@@ -84,7 +83,7 @@ export default function ReportsPage() {
       linkElement.click();
       
       toast.success('Report downloaded successfully');
-    } catch (error) {
+    } catch {
       toast.error('Failed to download report');
     }
   };

@@ -19,7 +19,7 @@ const initialState: ReportState = {
 // Async thunks
 export const fetchReports = createAsyncThunk(
   'reports/fetchReports',
-  async (params?: any, { rejectWithValue }) => {
+  async (params: any = {}, { rejectWithValue }) => {
     try {
       console.log('fetchReports: Making API call with params:', params);
       const response = await reportAPI.getReports(params);
