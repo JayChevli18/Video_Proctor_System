@@ -31,11 +31,13 @@ export default function AuthGuard({
         return;
       }
       
-      if (!isAuthenticated && !isLoading) {
+      // Always try to get current user if we have a token but no user data
+      if (token && !user && !isLoading) {
+        console.log('AuthGuard: Token found but no user, fetching current user...');
         dispatch(getCurrentUser());
       }
     }
-  }, [requireAuth, isAuthenticated, isLoading, router, dispatch]);
+  }, [requireAuth, isAuthenticated, isLoading, user, router, dispatch]);
 
   useEffect(() => {
     if (requireAuth && isAuthenticated && user) {

@@ -11,7 +11,7 @@ import { protect, authorize } from '@/middleware/auth';
 
 const router = express.Router();
 
-// router.use(protect); // All routes are protected
+router.use(protect); // All routes are protected
 
 router.route('/')
   .get(getUsers)

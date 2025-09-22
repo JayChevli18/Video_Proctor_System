@@ -19,22 +19,25 @@ import {
 } from 'lucide-react';
 import { formatDate, formatDateTime } from '@/lib/utils';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
   const dispatch = useDispatch<AppDispatch>();
-  const { user } = useSelector((state: RootState) => state.auth);
+  const router = useRouter();
+  const { user, isAuthenticated, isLoading: authLoading } = useSelector((state: RootState) => state.auth);
   const { interviews, isLoading: interviewsLoading } = useSelector((state: RootState) => state.interviews);
   const { reports, isLoading: reportsLoading } = useSelector((state: RootState) => state.reports);
-
+  
+  console.log('Dashboard auth state:', { user, isAuthenticated, authLoading });
   useEffect(() => {
-    if (user?._id) {
+    if (user?._id && isAuthenticated) {
       console.log('Dashboard: Fetching data for user:', user._id);
       dispatch(fetchInterviews({ user: user._id }));
       dispatch(fetchReports({ user: user._id }));
-    } else {
-      console.log('Dashboard: No user ID available, skipping API calls');
+    } else if (!authLoading) {
+      console.log('Dashboard: No user ID available or not authenticated, skipping API calls');
     }
-  }, [dispatch, user?._id]);
+  }, [dispatch, user?._id, isAuthenticated, authLoading]);
 
   const stats = [
     {
@@ -70,7 +73,7 @@ export default function DashboardPage() {
   const recentInterviews = interviews.slice(0, 5);
   const recentReports = reports.slice(0, 5);
 
-  if (interviewsLoading || reportsLoading) {
+  if (authLoading || interviewsLoading || reportsLoading) {
     return (
       <AuthGuard>
         <DashboardLayout>
@@ -194,21 +197,30 @@ export default function DashboardPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <button className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <button 
+                onClick={() => router.push('/interviews')}
+                className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+              >
                 <Calendar className="h-8 w-8 text-blue-600 mr-3" />
                 <div className="text-left">
                   <p className="font-medium text-gray-900">Schedule Interview</p>
                   <p className="text-sm text-gray-500">Create a new interview</p>
                 </div>
               </button>
-              <button className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <button 
+                onClick={() => router.push('/proctoring')}
+                className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+              >
                 <Video className="h-8 w-8 text-green-600 mr-3" />
                 <div className="text-left">
                   <p className="font-medium text-gray-900">Start Proctoring</p>
                   <p className="text-sm text-gray-500">Begin live monitoring</p>
                 </div>
               </button>
-              <button className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+              <button 
+                onClick={() => router.push('/reports')}
+                className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+              >
                 <FileText className="h-8 w-8 text-purple-600 mr-3" />
                 <div className="text-left">
                   <p className="font-medium text-gray-900">View Reports</p>
