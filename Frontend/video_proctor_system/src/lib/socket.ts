@@ -1,5 +1,5 @@
 import { io, Socket } from 'socket.io-client';
-import { SocketEvents } from '@/types';
+import { InterviewStartedData, InterviewEndedData, DetectionEventData } from '@/types';
 
 class SocketService {
   private socket: Socket | null = null;
@@ -56,19 +56,19 @@ class SocketService {
     }
   }
 
-  onInterviewStarted(callback: (data: any) => void): void {
+  onInterviewStarted(callback: (data: InterviewStartedData) => void): void {
     if (this.socket) {
       this.socket.on('interview-started', callback);
     }
   }
 
-  onInterviewEnded(callback: (data: any) => void): void {
+  onInterviewEnded(callback: (data: InterviewEndedData) => void): void {
     if (this.socket) {
       this.socket.on('interview-ended', callback);
     }
   }
 
-  onDetectionEvent(callback: (data: any) => void): void {
+  onDetectionEvent(callback: (data: DetectionEventData) => void): void {
     if (this.socket) {
       this.socket.on('detection-event', callback);
     }

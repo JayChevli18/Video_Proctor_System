@@ -20,8 +20,11 @@ export const loginUser = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Login failed');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Login failed');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Login failed';
+      return rejectWithValue(errorMessage || 'Login failed');
     }
   }
 );
@@ -36,8 +39,11 @@ export const registerUser = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Registration failed');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Registration failed');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Registration failed';
+      return rejectWithValue(errorMessage || 'Registration failed');
     }
   }
 );
@@ -51,8 +57,11 @@ export const getCurrentUser = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to get user');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to get user');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to get user';
+      return rejectWithValue(errorMessage || 'Failed to get user');
     }
   }
 );
@@ -66,8 +75,11 @@ export const updateUserDetails = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Update failed');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Update failed');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Update failed';
+      return rejectWithValue(errorMessage || 'Update failed');
     }
   }
 );
@@ -81,8 +93,11 @@ export const updatePassword = createAsyncThunk(
         return response.message;
       }
       return rejectWithValue(response.message || 'Password update failed');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Password update failed');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Password update failed';
+      return rejectWithValue(errorMessage || 'Password update failed');
     }
   }
 );
@@ -101,7 +116,7 @@ const authSlice = createSlice({
       state.token = action.payload;
       state.isAuthenticated = true;
     },
-    clearError: (state) => {
+    clearError: () => {
       // Clear any error state if needed
     },
   },

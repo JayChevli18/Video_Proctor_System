@@ -19,7 +19,7 @@ const initialState: ReportState = {
 // Async thunks
 export const fetchReports = createAsyncThunk(
   'reports/fetchReports',
-  async (params: any = {}, { rejectWithValue }) => {
+  async (params: Record<string, unknown> = {}, { rejectWithValue }) => {
     try {
       console.log('fetchReports: Making API call with params:', params);
       const response = await reportAPI.getReports(params);
@@ -28,9 +28,12 @@ export const fetchReports = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to fetch reports');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('fetchReports: API error:', error);
-      return rejectWithValue(error.response?.data?.message || 'Failed to fetch reports');
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to fetch reports';
+      return rejectWithValue(errorMessage || 'Failed to fetch reports');
     }
   }
 );
@@ -44,8 +47,11 @@ export const generateReport = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to generate report');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to generate report');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to generate report';
+      return rejectWithValue(errorMessage || 'Failed to generate report');
     }
   }
 );
@@ -59,8 +65,11 @@ export const fetchReportByInterview = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to fetch report');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to fetch report');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to fetch report';
+      return rejectWithValue(errorMessage || 'Failed to fetch report');
     }
   }
 );

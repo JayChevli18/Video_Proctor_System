@@ -23,7 +23,7 @@ const initialState: InterviewState = {
 // Async thunks
 export const fetchInterviews = createAsyncThunk(
   'interviews/fetchInterviews',
-  async (params: any = {}, { rejectWithValue }) => {
+  async (params: Record<string, unknown> = {}, { rejectWithValue }) => {
     try {
       console.log('fetchInterviews: Making API call with params:', params);
       const response = await interviewAPI.getInterviews(params);
@@ -32,9 +32,12 @@ export const fetchInterviews = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to fetch interviews');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('fetchInterviews: API error:', error);
-      return rejectWithValue(error.response?.data?.message || 'Failed to fetch interviews');
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to fetch interviews';
+      return rejectWithValue(errorMessage || 'Failed to fetch interviews');
     }
   }
 );
@@ -48,8 +51,11 @@ export const fetchInterview = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to fetch interview');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to fetch interview');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to fetch interview';
+      return rejectWithValue(errorMessage || 'Failed to fetch interview');
     }
   }
 );
@@ -63,8 +69,11 @@ export const createInterview = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to create interview');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to create interview');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to create interview';
+      return rejectWithValue(errorMessage || 'Failed to create interview');
     }
   }
 );
@@ -78,8 +87,11 @@ export const updateInterview = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to update interview');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to update interview');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to update interview';
+      return rejectWithValue(errorMessage || 'Failed to update interview');
     }
   }
 );
@@ -93,8 +105,11 @@ export const deleteInterview = createAsyncThunk(
         return id;
       }
       return rejectWithValue(response.message || 'Failed to delete interview');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to delete interview');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to delete interview';
+      return rejectWithValue(errorMessage || 'Failed to delete interview');
     }
   }
 );
@@ -108,8 +123,11 @@ export const startInterview = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to start interview');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to start interview');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to start interview';
+      return rejectWithValue(errorMessage || 'Failed to start interview');
     }
   }
 );
@@ -123,8 +141,11 @@ export const endInterview = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to end interview');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to end interview');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to end interview';
+      return rejectWithValue(errorMessage || 'Failed to end interview');
     }
   }
 );
@@ -138,8 +159,11 @@ export const uploadVideo = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to upload video');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to upload video');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to upload video';
+      return rejectWithValue(errorMessage || 'Failed to upload video');
     }
   }
 );
@@ -153,8 +177,11 @@ export const processFrame = createAsyncThunk(
         return response.data;
       }
       return rejectWithValue(response.message || 'Failed to process frame');
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Failed to process frame');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message 
+        : 'Failed to process frame';
+      return rejectWithValue(errorMessage || 'Failed to process frame');
     }
   }
 );

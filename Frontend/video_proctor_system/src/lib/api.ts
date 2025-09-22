@@ -115,7 +115,7 @@ export const userAPI = {
 
 // Interview API
 export const interviewAPI = {
-  getInterviews: async (params?: any): Promise<ApiResponse<Interview[]>> => {
+  getInterviews: async (params?: Record<string, unknown>): Promise<ApiResponse<Interview[]>> => {
     const response = await api.get('/interviews', { params });
     return response.data;
   },
@@ -174,7 +174,7 @@ export const interviewAPI = {
 
 // Report API
 export const reportAPI = {
-  getReports: async (params?: any): Promise<ApiResponse<Report[]>> => {
+  getReports: async (params?: Record<string, unknown>): Promise<ApiResponse<Report[]>> => {
     const response = await api.get('/reports', { params });
     return response.data;
   },

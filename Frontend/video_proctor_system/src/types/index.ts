@@ -86,7 +86,7 @@ export interface Report {
 }
 
 // API Response Types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   message?: string;
   data?: T;
@@ -103,15 +103,29 @@ export interface AuthState {
 }
 
 // Socket Event Types
+export interface InterviewStartedData {
+  interviewId: string;
+  status: string;
+  startedAt: Date;
+}
+
+export interface InterviewEndedData {
+  interviewId: string;
+  status: string;
+  endedAt: Date;
+}
+
+export interface DetectionEventData {
+  interviewId: string;
+  event: DetectionEvent;
+  integrityScore: number;
+}
+
 export interface SocketEvents {
   'join-interview': (interviewId: string) => void;
-  'interview-started': (data: any) => void;
-  'interview-ended': (data: any) => void;
-  'detection-event': (data: {
-    interviewId: string;
-    event: DetectionEvent;
-    integrityScore: number;
-  }) => void;
+  'interview-started': (data: InterviewStartedData) => void;
+  'interview-ended': (data: InterviewEndedData) => void;
+  'detection-event': (data: DetectionEventData) => void;
 }
 
 // Video Processing Types
@@ -153,7 +167,7 @@ export interface FormField {
   required?: boolean;
   options?: { value: string; label: string }[];
   placeholder?: string;
-  validation?: any;
+  validation?: Record<string, unknown>;
 }
 
 // Chart Data Types

@@ -12,7 +12,7 @@ export const formatDate = (date: string | Date, formatString: string = 'MMM dd, 
     const dateObj = typeof date === 'string' ? parseISO(date) : date;
     if (!isValid(dateObj)) return 'Invalid Date';
     return format(dateObj, formatString);
-  } catch (error) {
+  } catch {
     return 'Invalid Date';
   }
 };
@@ -148,7 +148,7 @@ export const sortBy = <T>(array: T[], key: keyof T, direction: 'asc' | 'desc' = 
 };
 
 // Debounce utility
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {
@@ -160,7 +160,7 @@ export const debounce = <T extends (...args: any[]) => any>(
 };
 
 // Throttle utility
-export const throttle = <T extends (...args: any[]) => any>(
+export const throttle = <T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): ((...args: Parameters<T>) => void) => {
