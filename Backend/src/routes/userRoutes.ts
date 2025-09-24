@@ -15,7 +15,7 @@ router.use(protect); // All routes are protected
 
 router.route('/')
   .get(getUsers)
-  .post(createUser);
+  .post(authorize('admin'), createUser);
 
 router.route('/role/:role')
   .get(getUsersByRole);

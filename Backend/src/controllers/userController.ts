@@ -39,15 +39,14 @@ export const getUser = async (req: IAuthRequest, res: Response): Promise<void> =
       return;
     }
 
-    // // Check authorization
-    // console.log("REq", req.user, req.params.id);
-    // if (req.user?.role !== 'admin' && req?.user?._id.toString() !== req.params.id) {
-    //   res.status(403).json({
-    //     success: false,
-    //     message: 'Not authorized to access this user'
-    //   });
-    //   return;
-    // }
+    // Check authorization - users can view their own profile, admins can view any
+    if (req.user?.role !== 'admin' && req?.user?._id.toString() !== req.params.id) {
+      res.status(403).json({
+        success: false,
+        message: 'Not authorized to access this user'
+      });
+      return;
+    }
 
     res.json({
       success: true,
@@ -103,14 +102,14 @@ export const updateUser = async (req: IAuthRequest, res: Response): Promise<void
       return;
     }
 
-    // Check authorization
-    // if (req?.user?.role !== 'admin' && req?.user?._id !== req?.params?.id) {
-    //   res.status(403).json({
-    //     success: false,
-    //     message: 'Not authorized to update this user'
-    //   });
-    //   return;
-    // }
+    // Check authorization - users can update their own profile, admins can update any
+    if (req?.user?.role !== 'admin' && req?.user?._id.toString() !== req?.params?.id) {
+      res.status(403).json({
+        success: false,
+        message: 'Not authorized to update this user'
+      });
+      return;
+    }
 
     // Don't allow password updates through this route
     if (req.body.password) {

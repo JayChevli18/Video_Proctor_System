@@ -147,17 +147,6 @@ export const sortBy = <T>(array: T[], key: keyof T, direction: 'asc' | 'desc' = 
   });
 };
 
-// Debounce utility
-export const debounce = <T extends (...args: unknown[]) => unknown>(
-  func: T,
-  wait: number
-): ((...args: Parameters<T>) => void) => {
-  let timeout: NodeJS.Timeout;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-};
 
 // Throttle utility
 export const throttle = <T extends (...args: unknown[]) => unknown>(
@@ -171,5 +160,14 @@ export const throttle = <T extends (...args: unknown[]) => unknown>(
       inThrottle = true;
       setTimeout(() => (inThrottle = false), limit);
     }
+  };
+};
+
+// Debounce utilit
+export const debounce = (func: Function, delay: number) => {
+  let timeout: NodeJS.Timeout;
+  return (...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), delay);
   };
 };

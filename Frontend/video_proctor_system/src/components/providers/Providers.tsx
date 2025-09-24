@@ -6,12 +6,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { store, persistor } from '@/store';
 import { useEffect, useState } from 'react';
 import AuthInitializer from '@/components/auth/AuthInitializer';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
       retry: 1,
+      
     },
   },
 });
@@ -23,6 +25,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <QueryClientProvider client={queryClient}>
           <AuthInitializer />
           {children}
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </PersistGate>
     </Provider>

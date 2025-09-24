@@ -187,3 +187,124 @@
 {"level":"info","message":"Client disconnected: m69GchNLGmJJUiLuAAAG","service":"video-proctor-backend","timestamp":"2025-09-19 21:06:10"}
 {"level":"info","message":"Client connected: PybPIgwEHTDHoeUrAAAK","service":"video-proctor-backend","timestamp":"2025-09-19 22:30:02"}
 {"level":"info","message":"Client connected: SExrpq2yDITqSsojAAAL","service":"video-proctor-backend","timestamp":"2025-09-19 22:30:02"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:40"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:40"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:40"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:40"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:41"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:41"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-22 13:20:41"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:13"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:13"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:13"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:13"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:15"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:15"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:15"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-22 18:43:28"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:42"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:42"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:42"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:42"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:43"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:43"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-22 18:45:43"}
+{"level":"warn","message":"MongoDB disconnected","service":"video-proctor-backend","timestamp":"2025-09-22 18:56:44"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:09"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:09"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:09"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:09"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:10"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:10"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-22 18:57:10"}
+{"level":"info","message":"Client connected: 7eTaKLcuwIuPonF3AAAB","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:13"}
+{"level":"info","message":"Client 7eTaKLcuwIuPonF3AAAB joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:13"}
+{"level":"info","message":"Client 7eTaKLcuwIuPonF3AAAB left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:13"}
+{"level":"info","message":"Client connected: jcAPvcpe09GEzBOyAAAD","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:13"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:13"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:18"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:50"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:50"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:58:50"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:02"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:03"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:06"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:06"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:06"}
+{"level":"info","message":"Client jcAPvcpe09GEzBOyAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:08"}
+{"level":"info","message":"Client disconnected: 7eTaKLcuwIuPonF3AAAB","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:24"}
+{"level":"info","message":"Client disconnected: jcAPvcpe09GEzBOyAAAD","service":"video-proctor-backend","timestamp":"2025-09-22 18:59:24"}
+{"level":"warn","message":"MongoDB disconnected","service":"video-proctor-backend","timestamp":"2025-09-22 19:18:46"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:46"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:46"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:46"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:46"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:48"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:48"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:17:48"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:51"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:51"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:51"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:51"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:53"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:53"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:42:53"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:43:41"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:32"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:32"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:32"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:32"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:33"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:33"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:33"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:59"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:59"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:59"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:55:59"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-01.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:00"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:00"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:00"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:19"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:19"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:19"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:19"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:21"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:21"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:21"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:45"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:45"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:45"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:45"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-02.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:46"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:46"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-23 15:56:46"}
+{"level":"info","message":"Client connected: or60627jZoRKZdCyAAAB","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:08"}
+{"level":"info","message":"Client or60627jZoRKZdCyAAAB joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:08"}
+{"level":"info","message":"Client or60627jZoRKZdCyAAAB left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:08"}
+{"level":"info","message":"Client connected: Z_W5H3D6F0aLnf4mAAAD","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:08"}
+{"level":"info","message":"Client Z_W5H3D6F0aLnf4mAAAD joined interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:08"}
+{"level":"info","message":"Client Z_W5H3D6F0aLnf4mAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:15"}
+{"level":"info","message":"Client Z_W5H3D6F0aLnf4mAAAD left interview 68d14ee093b57d51fb9a462a","service":"video-proctor-backend","timestamp":"2025-09-23 16:18:30"}
+{"level":"info","message":"Client disconnected: or60627jZoRKZdCyAAAB","service":"video-proctor-backend","timestamp":"2025-09-23 16:20:59"}
+{"level":"info","message":"Client disconnected: Z_W5H3D6F0aLnf4mAAAD","service":"video-proctor-backend","timestamp":"2025-09-23 16:20:59"}
+{"level":"info","message":"Initializing computer vision models...","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:06"}
+{"level":"info","message":"MediaPipe Face Mesh not available, using simulation mode for face detection","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:07"}
+{"level":"info","message":"TensorFlow.js not available, using simulation mode for object detection","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:07"}
+{"level":"info","message":"Computer vision models initialized successfully","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:07"}
+{"level":"info","message":"MongoDB Connected: ac-6kov7n4-shard-00-00.dmbmty3.mongodb.net","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:08"}
+{"level":"info","message":"Database connected successfully","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:08"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"video-proctor-backend","timestamp":"2025-09-24 10:15:08"}
+{"level":"warn","message":"MongoDB disconnected","service":"video-proctor-backend","timestamp":"2025-09-24 13:02:46"}
+{"level":"warn","message":"MongoDB disconnected","service":"video-proctor-backend","timestamp":"2025-09-24 13:03:47"}
